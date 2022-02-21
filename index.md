@@ -1,37 +1,115 @@
-## Welcome to GitHub Pages
+# JavaScript One Liners
 
-You can use the [editor on GitHub](https://github.com/HelloIamBaymax/JavaScript-One-Liners/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+<!-- 
+https://medium.com/dailyjs/10-javascript-oneliners-you-have-got-to-add-your-arsenal-as-a-developer-b733cbb973b2
+https://dev.to/saviomartin/20-killer-javascript-one-liners-94f
+https://www.makeuseof.com/javascript-one-liners-you-should-know/
+-->
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+<!--------- RANDOM STUFF -------->
 
-### Markdown
+### Random Number Generator
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```JavaScript
+const randomNumber = (rangeStart, rangeEnd) => new Date().getTime() % rangeEnd + rangeStart;
 ```
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+```JavaScript
+const randomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+```
 
-### Jekyll Themes
+### Random Hexadecimal Color Generator
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/HelloIamBaymax/JavaScript-One-Liners/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+```JavaScript
+const randomHexColor = () => `#${Math.floor(Math.random()*0xFFFFFF).toString(16).padStart(6,'0')}`;
+```
 
-### Support or Contact
+<!------------ STRING ----------->
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+### Capitalize a String
+
+```JavaScript
+const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
+```
+
+### String Reverse
+
+```JavaScript
+const reverseString = (str) => str.split("").reverse().join("");
+```
+
+```JavaScript
+const reverseString = (str) => [...str].reverse().join();
+```
+
+### Convert Snake case to Camel case
+
+```JavaScript
+const snakeToCamel = (str) => str.toLowerCase().replace(/(_\w)/g, (word) => word.toUpperCase().substr(1));
+```
+
+<!------------ ARRAY ----------->
+
+### Check if an Array Is Empty
+
+```JavaScript
+const isEmpty = (arr) => !Array.isArray(arr) || !arr.length;
+```
+
+### Average of an Array of Number
+
+```JavaScript
+const average = (arr) => arr.reduce((a, b) => a + b) / arr.length;
+```
+
+### Find Unique Values in an Array
+
+```JavaScript
+const findUniqueValues = (arr) => arr.filter((i) => arr.indexOf(i) === arr.lastIndexOf(i));
+```
+
+### Remove Duplicates from an Array
+
+```JavaScript
+const removeDuplicates = (arr) => [...new Set(arr)];
+```
+
+### Shuffle an Array
+
+```JavaScript
+const shuffle = (arr) => arr.slice().sort(() => Math.random() - 0.5);
+```
+
+### Remove Falsy value from Array
+
+```JavaScript
+const removeFalsyValues = (arr) => arr.filter(x=>x)
+```
+
+```JavaScript
+const removeFalsyValues = (arr) => arr.filter(Boolean)
+```
+
+<!------------- DATE ------------>
+
+### Days between two dates
+
+```JavaScript
+const daysBetweenDates = (date1, date2) => Math.ceil(Math.abs(date1 - date2) / (1000 * 60 * 60 * 24));
+```
+
+### Weekday of a Date
+
+```JavaScript
+const getWeekday = (date) => ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][date.getDay()];
+```
+
+```JavaScript
+const getWeekday = (date) => date.toLocaleString('en-US', {weekday: 'long'});
+```
+
+### Check if the date is Weekend
+
+```JavaScript
+const isWeekend = (date) => [5, 6].indexOf(date.getDay()) !== -1;
+```
